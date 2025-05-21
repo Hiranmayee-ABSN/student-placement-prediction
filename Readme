@@ -1,0 +1,70 @@
+Student Placement Prediction App
+
+This project is a Flask-based web application that predicts whether a student is likely to be placed based on their CGPA and IQ. 
+It uses a trained Logistic Regression model, serialized with 'joblib', and deployed through a simple HTML form interface.
+
+->Features
+
+* Input: CGPA and IQ score
+* Output: Prediction indicating placement likelihood
+* Trained using multiple ML models for benchmarking (Logistic Regression, Random Forest, KNN, Decision Tree)
+* Final model: Logistic Regression (`final_model.pkl')
+* Frontend served with Flask and rendered via 'index.html'
+
+-> Model Training ('SPP.py')
+
+* Dataset: 'placement-dataset.csv`
+* Preprocessing:
+  * Dropped index column
+  * Used CGPA and IQ as input features
+* Models Evaluated:
+
+  * Logistic Regression ✅ (final model)
+  * Random Forest
+  * K-Nearest Neighbors (KNN)
+  * Decision Tree
+* Model Persistence: Trained logistic regression model saved as 'final_model.pkl'
+
+->Web Application ('app.py')
+
+* Flask-based app with:
+
+  * '/' route: Renders input form
+  * '/predict' route: Accepts POST request, loads model, and predicts based on input
+
+Example Prediction Flow:
+
+1. User submits CGPA and IQ
+2. Model returns:
+
+   * ✅ Likely to be placed!
+   * ❌ May not be placed.
+->Setup Instructions
+
+1.Prerequisites:
+* Python 3.8+
+* Flask
+* NumPy, Pandas, Scikit-learn, Matplotlib, Joblib
+
+2.Installation:
+pip install flask numpy pandas scikit-learn matplotlib joblib
+
+3.Running the App:
+python app.py
+
+App will be available at: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+-Sample Input:
+CGPA: 8.2
+IQ: 110
+-Output:
+✅ Likely to be placed!
+
+
+->Notes
+
+* Ensure 'final_model.pkl' is in the same directory as 'app.py'.
+* Add an 'index.html' file inside the `templates/` folder with input fields for CGPA and IQ and a prediction display area.
+
+-> License
+
+This project is open-source and free to use for educational and learning purposes.
